@@ -4,8 +4,12 @@ metadata:
   name: etcd-{{ .Values.role }}-client
   namespace: {{ .Release.Namespace }}
   labels:
+    garden.sapcloud.io/role: controlplane
     app: etcd-statefulset
     role: {{ .Values.role }}
+    networking.gardener.cloud/to-dns: allowed
+    networking.gardener.cloud/to-public-networks: allowed
+    networking.gardener.cloud/to-private-networks: allowed
 spec:
   type: ClusterIP
   sessionAffinity: None
